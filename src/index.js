@@ -22,10 +22,11 @@ const app = new Application({
   width: window.innerWidth,
   height: window.innerHeight,
 });
+
 document.body.appendChild(app.view); // Create Canvas tag in the body
 
 // Load the logo
-app.loader.add("logo", "./assets/logo.png");
+app.loader.add("logo", "src/assets/logo.jpg");
 app.loader.load(() => {
   const sprite = Sprite.from("logo");
   sprite.anchor.set(0.5); // We want to rotate our sprite relative to the center, so 0.5
@@ -34,7 +35,8 @@ app.loader.load(() => {
   // Position the sprite at the center of the stage
   sprite.x = app.screen.width * 0.5;
   sprite.y = app.screen.height * 0.5;
-
+  sprite.height = 50;
+  sprite.width = 50;
   // Put the rotating function into the update loop
   app.ticker.add((delta) => {
     sprite.rotation += 0.02 * delta;
